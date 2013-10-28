@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>Lab10-1</title>
+
+<style type="text/css">
+<!--
+.style1 {
+	color: #990000;
+	font-weight: bold;
+}
+
+.style2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #0000FE;
+	font-size: 14pt;
+}
+
+.center-div {
+	width: 75%;
+	margin-right: auto;
+	margin-left: auto;
+}
+.header-text {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+	font-weight: bold;
+	text-align: center;
+}
+
+.center-items {
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+.right-align {
+	text-align: right;
+}
+
+.left-align {
+	text-align: left;
+}
+
+#footer {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:8pt;
+	font-weight:bold;
+	color: #33C;
+	text-align:center;
+}
+
+-->
+</style>
+
+<script>
+    var scrollMsg="** -Danyi's Donuts make great fund-raising items.- **"
+    var beginPos=0
+    function scrollingMsg() {
+       document.getElementById("scrollingMsg").value = scrollMsg.substring(beginPos,scrollMsg.length)+scrollMsg.substring(0,beginPos)
+       beginPos+=1
+       if (beginPos > scrollMsg.length) {
+          beginPos=0
+       }
+       window.setTimeout("scrollingMsg()",200)
+    }
+	
+	function validateInput(myForm) {
+	var mCredits = parseInt(document.donutOrder.donutType.value)
+    if ((mCredits<18)) {
+        alert("Please select the donut from the drop-down list.")
+        document.donutOrder.donutType.focus()
+    }
+    else {
+          var mXpense = document.donutOrder.count.value
+          if (isNaN(mXpense) || (mXpense < 1)) {
+             alert("Expense is not a valid entry (should be greater than 0)")
+             document.donutOrder.count.value = ""
+             document.donutOrder.count.focus()
+          }
+          else {
+			var tuition = (mXpense * mCredits) / 100
+			document.donutOrder.donutCost.value = tuition;
+          }
+     }
+	 
+	 }
+	 
+	 function thankyouWindow(){
+	 open("lab10-1thankyou.html", "noticeWin", "width=720,height=530");
+	 }
+	 
+	 function lastMod(){
+	 document.getElementById("footer").innerHTML="This document was last modified " + (document.lastModified);
+	 }
+</script>
+</head>
+<body onload="scrollingMsg(); thankyouWindow(); lastMod()">
+<div class="center-div">
+  <p class="center-items"><img src="../Ref/lab10-1banner.jpg" alt="tri star logo" width="750" height="120"></p>
+</div>
+<div class="center-div">
+  <p class="center-items"><span class="style2">Danyi's Donuts Online Ordering System</span></p>
+  <form name="donutOrder" class="center-div" id="donutOrder">
+    <table class="center-div">
+        <tr>
+          <td class="right-align">
+              <span class="style1">*</span>Types of Donuts:
+          </td>
+          <td>
+              <select name="donutType">
+                <option>Select the Type of Donut</option>
+                <option value="19">Glazed</option>
+                <option value="23">Chocolate</option>
+                <option value="24">Jelly Filled</option>
+                <option value="21">Strawberry Sprinkle</option>
+                <option value="18">Danyi Special</option>
+              </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="right-align">
+        <span class="style1">*</span>Enter the number of donuts: </td>
+        <td><input type="text" name="count" id="count"></td>
+       </tr>
+        <tr>
+          <td class="right-align">
+		    <input type="button" value="Calculate" onclick="validateInput(this)">
+          </td>
+          <td>
+            <input type="reset">
+          </td>
+        </tr>
+         <tr>
+           <td class="right-align"><span class="style1">*</span>Cost of donuts: </td>
+           <td><input type="text" name="donutCost" value=" " size="9"></td>
+         </tr>
+    </table>
+			<p class="center-items"><input type="text" name="scrollingMsg" id ="scrollingMsg" size="25"></p>
+</form>
+
+<div id="footer"></div>
+</div>
+</body>
+</html>
