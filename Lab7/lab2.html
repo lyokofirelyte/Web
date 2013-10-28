@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>Lab10-2 Solution</title>
+
+<style type="text/css">
+<!--
+.centerit {
+	text-align: center;
+}
+
+.center-div {
+	width: 75%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.header-text {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+	font-weight: bold;
+	text-align: center;
+}
+
+.right-align {
+	text-align: right;
+}
+
+.left-align {
+	text-align: left;
+}
+table {
+	width: 75%;
+	margin-right: auto;
+	margin-left: auto;
+}
+.td-cell-reight {
+	text-align: right;
+	width: 50%;
+}
+.td-cell-left {
+	text-align: left;
+	width: 50%;
+}
+
+#footer {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:8pt;
+	font-weight:bold;
+	color: black;
+	text-align:left;
+}
+
+-->
+</style>
+<script>
+    var scrollMsg="** Remember, you should add about 10% more to your order so you do not run short. **"
+    var beginPos=0
+    function scrollingMsg() {
+       document.getElementById("scrollingMsg").value = scrollMsg.substring(beginPos,scrollMsg.length)+scrollMsg.substring(0,beginPos)
+       beginPos+=1
+       if (beginPos > scrollMsg.length) {
+          beginPos=0
+       }
+       window.setTimeout("scrollingMsg()",200)
+    }
+	
+	
+function validateInput(myForm) {
+	var lengthh = parseInt(document.concreteForm.length.value)
+	var widthh = parseInt(document.concreteForm.width.value)
+	var depthh = parseInt(document.concreteForm.depth.value)
+
+    if ((lengthh < 0) || (widthh < 0) || (depthh < 0)) {
+        alert("Please use a number greater than 0.")
+        document.concreteForm.length.focus()
+    }
+    else {
+          var bleh = (lengthh * widthh * depthh);
+		  var whocares = bleh / 1728;
+		  var irrelevant = whocares / 27;
+		  document.concreteForm.yards.value = irrelevant.toFixed(2);
+		  // I'll use whatever variable names I want, book!
+     }
+}
+
+	 
+	 function thankyouWindow(){
+	 open("lab10-2announce.html", "noticeWin", "width=545,height=330");
+	 }
+	 
+	 function lastMod(){
+	 document.getElementById("footer").innerHTML="This document was last modified " + (document.lastModified);
+	 }
+</script>
+</head>
+<body onload="scrollingMsg(); thankyouWindow(); lastMod()">
+<div class="center-div">
+  <p class="centerit"><img src="../Ref/lab10-2banner.jpg" alt="banner" id="edgewoodbanner">
+  </p>
+</div>
+<div class="center-div">
+
+</div>
+<p class="header-text" >Concrete Yard Calculator</p>
+<div class="center-div">
+<form name="concreteForm" class="centerit" id="concreteForm">
+<p class="center-items"><input type="text" name="scrollingMsg" id ="scrollingMsg" size="25">
+  <table>
+    <tr>
+      <td colspan="2" class="left-align">Enter the length of your concrete needs, the width, and then the depth in inches. Click the Calculate button to see how many yards of concrete you need for particular job. A sidewalk or basement floor should be four inches deep. A garage and driveway holding light cars or pick up trucks, should be at least six deep. If you are going to have heavy trucks on your driveway, call us for the recommended depth.</td>
+    </tr>
+    <tr>
+      <td class="td-cell-reight">Length:</td>
+      <td class="td-cell-left"><input type="text" name="length" size="7"></td>
+    </tr>
+    <tr>
+      <td class="td-cell-reight">Width:</td>
+      <td class="td-cell-left"><input type="text" name="width" size="7"></td>
+    </tr>
+    <tr>
+      <td class="td-cell-reight">Depth:</td>
+      <td class="td-cell-left"><input type="text" name="depth" size="7"></td>
+    </tr>
+    <tr>
+      <td class="td-cell-reight"><input name="button" type="button" value="Calculate" onclick="validateInput(this)"></td>
+      <td class="td-cell-left"><input type="reset" value="Reset"></td>
+    </tr>
+    <tr>
+      <td class="td-cell-reight">Number of yards of concrete needed:</td>
+      <td class="td-cell-left"><input type="text" name="yards" size="7"></td>
+    </tr>
+    <tr>
+      <td colspan="2">&nbsp;</td>
+    </tr>
+  </table>
+  <div id="footer" style="margin-left: 20%"></div>
+</form>
+</div>
+
+
+</body>
+</html>
