@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>Lab10-3 Solution</title>
+
+<style type="text/css">
+<!--
+body {
+	background-image: url(lab10-3background.jpg);
+}
+
+.headingline {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14pt;
+	font-weight: bold;
+	color: #900;
+	text-align: center;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-center {
+	text-align:center;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+	width: auto;
+}
+
+.block {
+	width: 50%;
+	margin-right: auto;
+	margin-left: auto;
+}
+-->
+</style>
+<script>
+    var scrollMsg="** The higher your monthly payments, the quicker you can pay off your debt. **"
+    var beginPos=0
+    function scrollingMsg() {
+       document.getElementById("scrollingMsg").value = scrollMsg.substring(beginPos,scrollMsg.length)+scrollMsg.substring(0,beginPos)
+       beginPos+=1
+       if (beginPos > scrollMsg.length) {
+          beginPos=0
+       }
+       window.setTimeout("scrollingMsg()",200)
+    }
+	
+	 function lastMod(){
+	 document.getElementById("footer").innerHTML="This document was last modified " + (document.lastModified);
+	 }
+	 
+function validateInput(myForm) {
+	var debitAmount = parseInt(document.CreditPayOff.debAmt.value)
+	var interestRate = parseInt(document.CreditPayOff.interestRate.value)
+	var monthlyPayments = parseInt(document.CreditPayOff.monPmt.value)
+    if (debitAmount <= 0 || interestRate <= 0 || monthlyPayments <= 0) {
+        alert("If you really have 0 debt then why are here?")
+        document.CreditPayOff.debAmt.focus()
+    }
+    else {
+          interestRate = interestRate / 100
+		  var bleh = (interestRate * debitAmount)
+		  var blargh = bleh + debitAmount
+		  var meh = blargh / monthlyPayments
+		  document.CreditPayOff.NPER.value = meh.toFixed(2);
+          
+     }
+}
+
+	 function thankyouWindow(){
+	 open("lab10-3announce.html", "noticeWin", "width=720,height=530");
+	 }
+</script>
+</head>
+<body onload="scrollingMsg(); lastMod(); thankyouWindow()">
+<p class="align-center"><img src="../Ref/lab10-3banner.jpg" width="750" height="120" alt="banner"></p>
+<form>
+<p class="align-center"><input type="text" name="scrollingMsg" id ="scrollingMsg" size="25"></p>
+</form>
+<p class="headingline">Pay off your credit card debt</p>
+<p class="block"><strong>Directions: </strong>Enter a the amount of debt without commas, press the tab key, enter the APR Interest rate, and press the tab key. Enter the monthly payment you make. Note: most credit cards caclulate a miminum monthly payment of 4% of the balance.</p>
+<form id="CreditPayOff" name ="CreditPayOff">
+    <table>
+        <tr>
+           <td class="align-right">
+              <span style="color:#cc0000">*</span><strong>Amount of Credit Card Debt:</strong>
+           </td>
+          <td><input name="debtAmt" type="text" id="debAmt" size="9"></td>
+        </tr>
+        <tr>
+          <td class="align-right">
+             <span style="color:#cc0000">*</span><strong>Interest Rate (as 9.9%):</strong>
+          </td>
+          <td><input name="interestRate" type="text" id="interestRate" size="9"></td>
+        </tr>
+        <tr>
+          <td class="align-right">
+             <span style="color:#cc0000">*</span><strong>Monthly Payments:</strong>
+          </td>
+          <td>
+             <input name="monPmt" type="text" id="monPmt" size="9">
+          </td>
+        </tr>
+        <tr>
+           <td class="align-right">
+            <input name="button" type="button" value="Calculate" onclick="validateInput(this)">
+	       </td>
+           <td>
+             <input name="Reset" type="reset">
+		   </td>
+        </tr>
+        <tr>
+           <td class="align-right">
+              <span style="font-weight:bolder">Months to Payoff:</span>
+           </td>
+          <td><input type="text" name="NPER" id="NPER" value=" " size="12"></td>
+        </tr>
+  </table>
+  <p class="align-center"><span style="color:#cc0000; font-size:12px">* Indicates a required field.</span></p>
+</form>
+<div style="margin-left: 20%; font-size: small" id="footer"></div>
+</body>
+</html>
