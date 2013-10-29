@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Calculator</title>
+	<meta name="Author" content="David Tossberg" />
+	<meta name="Author" content="Fabian O" />
+	<meta name="Author" content="Owen Kirby" />
+	<meta name="Author" content="Jayson Federick" />
+	<meta charset="utf-8" />
+	
+	<link rel="shortcut-icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+
+<body onload="startUp()">
+
+<p id="calcHeader" class="calcHeader">Calculator Pro 9000</p>
+<br />
+<form action="scripts.js" method="post">
+<table>
+	<tr>
+		<td colspan="5" class="display"><div id="display">zero</div></td>
+	</tr>
+	<tr> <!-- Memory Management -->
+		<td><input type="button" name="mem" id="a1" onclick="memSet()" value="M+" /></td>
+		<td><input type="button" name="mem" id="a2" onclick="memDel()" value="M-" /></td>
+		<td><input type="button" name="mem" id="a3" onclick="memView()" value="M" /></td>
+		<td><input type="button" name="mem" id="a4" onclick="backSpace()" value="<--" /></td>
+		<td><input type="button" name="mem" id="a5" onclick="clearCalc()" value="CLR" /></td>
+	</tr>
+	<tr> <!-- Begin normal calc functions -->
+		<td><input type="button" name="num" id="b1" onclick="input(value)" value="7" /></td>
+		<td><input type="button" name="num" id="b2" onclick="input(value)" value="8" /></td>
+		<td><input type="button" name="num" id="b3" onclick="input(value)" value="9" /></td>
+		<td><input type="button" name="util" id="b4" onclick="input(value)" value="(" /></td>
+		<td><input type="button" name="util" id="b5" onclick="input(value)" value=")" /></td>
+	</tr>
+	<tr> 
+		<td><input type="button" name="num" id="b6" onclick="input(value)" value="4" /></td>
+		<td><input type="button" name="num" id="b7" onclick="input(value)" value="5" /></td>
+		<td><input type="button" name="num" id="b8" onclick="input(value)" value="6" /></td>
+		<td><input type="button" name="util" id="b9" onclick="input(value)" value="+" /></td>
+		<td><input type="button" name="util" id="b10" onclick="input(value)" value="-" /></td>
+	</tr>
+	<tr> 
+		<td><input type="button" name="num" id="c1" onclick="input(value)" value="1" /></td>
+		<td><input type="button" name="num" id="c2" onclick="input(value)" value="2" /></td>
+		<td><input type="button" name="num" id="c3" onclick="input(value)" value="3" /></td>
+		<td><input type="button" name="util" id="c4" onclick="input(value)" value="*" /></td>
+		<td><input type="button" name="util" id="c5" onclick="input(value)" value="/" /></td>
+	</tr>
+	<tr>  <!-- Zero & Equals + Display Toggle -->
+		<td><input type="button" name="zero" id="d1" onclick="input(value)" value="0" /></td>
+		<td><input type="button" name="num" id="d2" onclick="input(value)" value="." /></td>
+		<td><input type="button" name="toggle" id="d3" onclick="toggleDisplay()" value="@" /></td>
+		<td colspan="2"><input type="button" name ="equals" id="d4" onclick="calculate()" value="=" /></td>
+	</tr>
+</table>
+</form>
+<p id="fancyCalcDisplay"></p>
+
+<script src="scripts.js"></script>
+
+<!-- Since localstorage does not work unless we're on a server, SPAN MEMORY STORAGE! YEAH! -->
+
+<span id="toggled">true</span>
+<span id="currentAnswer"></span>
+<span id="currentInput">zero</span>
+<span id="boot">true</span>
+<span id="limit">0</span>
+<span id="memory">zero</span>
+
+</body>
+</html>
