@@ -1,4 +1,4 @@
 Web
 ===
 
-DO NOT COPY - USE AS REFERENCE
+Group 2 Web Design Things.
