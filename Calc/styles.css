@@ -1,0 +1,140 @@
+/*stYlEShE3T*/
+
+/*Header of the page*/
+
+.calcHeader {
+color:#660033;
+border: 1px solid white;
+margin: auto;
+text-shadow: -20px 5px 10px #660033, 10px 5px 10px #000066;
+text-align: center;
+font-weight: bold;
+font:2em "Comic Sans MS", cursive, sans-serif;
+}
+
+.fancyCalcDisplay{
+text-shadow: -10px 5px 10px #888888, 10px 5px 10px #888888;
+text-align:center;
+margin: auto;
+color:white;
+opacity:0.7;
+font:5em "Comic Sans MS", cursive, sans-serif;
+}
+
+/*General body / table theme (COMIC SANS! AHAHA)*/
+
+body {
+font-family:"Comic Sans MS", cursive, sans-serif;
+}
+
+table, td, tr {
+margin: auto;
+font:"Comic Sans MS", cursive, sans-serif;
+}
+
+/* We're using these for memory storage due to localstorage not working on localhost */
+
+span {
+display: none;
+}
+
+/*Button colors & styling*/
+
+input[type=button] {
+box-shadow: 3px 8px 5px #888888;
+width: 40px;
+padding: 5px 5px 5px 5px;
+border:1px solid #9f9f9f;
+color:#000;
+font:0.8em "Comic Sans MS", cursive, sans-serif;
+border-radius: 50px;
+}
+
+input[name=num] {
+border-radius:10px;
+box-shadow: 3px 8px 5px #696977;
+background-color: #696977;
+color:#C2C2D6;
+font-weight: bold;
+}
+
+input[name=util] {
+border-radius:10px;
+box-shadow: 3px 8px 5px #660033;
+padding: 5px 5px 5px 5px;
+border: 1px solid #666;
+background-color: #660033;
+color:#C2C2D6;
+}
+
+input[name=zero] {
+border-radius:10px;
+background-color: #696977;
+color:#C2C2D6;
+font-weight: bold;
+}
+
+input[name=toggle] {
+border-radius:10px;
+background-color: #54545F;
+color:#C2C2D6;
+font-weight: bold;
+}
+
+input[name=equals] {
+width: 90px;
+border-radius:5px;
+box-shadow: 3px 8px 5px #801A00;
+background-color: #801A00;
+color:#C2C2D6;
+font-weight: bold;
+}
+
+/*Calculator output panel*/
+
+.display {
+text-align: right;
+border-radius:5px;
+box-shadow: 3px 8px 5px #000066;
+width: 200px;
+height: 25px;
+padding: 5px 5px 5px 5px;
+background-color: #CACADC;
+border: 2px solid #000066;
+border-style: groove;
+color:#000;
+font:1em "Comic Sans MS", cursive, sans-serif;
+}
+
+/*On button hover*/
+
+.display:hover {
+background-color: #8282B4;
+}
+
+input[name=util]:hover {
+background-color:#520029;
+}
+
+input[name=toggle]:hover{
+background-color:#43434C;
+}
+
+input[name=mem]:hover {
+background-color:#A9A9A9;
+}
+
+input[name=equals]:hover {
+background-color:#661500;
+}
+
+input[name=num]:hover, input[name=zero]:hover {
+background-color:#54545F;
+}
+
+/*On button click*/
+
+input[type=button]:active{
+border:1px inset #1d659f;
+padding:3px 3px 3px 3px;
+}
